@@ -3,6 +3,7 @@
   body,
   html {
     height: 100%;
+    background-color: black;
   }
 
   .messages-box {
@@ -41,7 +42,7 @@
     left: 0;
     right: 0;
     padding: 10px;
-    background-color: #f8f9fa;
+    background-color: #17a2b8
   }
 
   .message-input {
@@ -63,7 +64,7 @@
 {% endblock %} {% block content %}
 <div class="chat-container">
   <div class="card flex-grow-1">
-    <div class="card-header bg-primary text-white">Chat</div>
+    <div class="card-header bg-info text-white">Chat</div>
     <div class="card-body messages-box">
       <ul class="list-unstyled messages-list">
         <li class="message received">
@@ -91,7 +92,7 @@
         placeholder="Type your message..."
       />
       <div class="input-group-append">
-        <button type="submit" class="btn btn-primary btn-send">Send</button>
+        <button type="submit" class="btn btn-warning btn-send">Send</button>
       </div>
     </div>
   </form>
