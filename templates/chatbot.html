@@ -26,12 +26,12 @@
   }
 
   .sent {
-    background-color: #dcf8c6;
+    background-color: #ffc107;
     align-self: flex-end;
   }
 
   .received {
-    background-color: #f1f0f0;
+    background-color: #f1f0f0; /*17a2b8*/
     align-self: flex-start;
   }
 
@@ -124,6 +124,32 @@
     `
     messagesList.appendChild(messageItem)
     messageInput.value = ''
+
+    fetch('', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+        'message': message
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const response = data.response
+      const messageItem = document.createElement('li')
+      messageItem.classList.add('message', 'received')
+      messageItem.innerHTML = `
+      <div class="message-text">
+        <div class="message-sender">
+          <b>Chatbot</b>
+        </div>
+        <div class="message-content">
+          ${response}
+        </div>
+      </div>
+      `
+      messagesList.appendChild(messageItem)
+    })
   })
 
 </script>
