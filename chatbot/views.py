@@ -17,7 +17,7 @@ def askOpenai(message):
     response = openai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
         messages=[
-        {"role": "system", "content": "You are a helpful assistant that answers all questions based on your knowledge."},
+        {"role": "system", "content": "You are a helpful, friendly assistant that answers all questions based on your knowledge."},
         {"role": "user", "content": message}
     ]
     )
