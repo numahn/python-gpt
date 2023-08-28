@@ -59,12 +59,15 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin-left: -10px;
+    margin-top: -5px;
   }
 </style>
 {% endblock %} {% block content %}
 <div class="chat-container">
-  <div class="card flex-grow-1">
-    <div class="card-header bg-info text-white">Chat</div>
+  <div class="card flex-row flex-grow-1">
+    <div class="card-header bg-info text-white"><p>Chat</p><a href="logout">Logout</a></div>
+   
     <div class="card-body messages-box">
       <ul class="list-unstyled messages-list">
         <li class="message received">
