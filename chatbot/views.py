@@ -29,8 +29,18 @@ def chatbot(req):
     return render(req, 'chatbot.html')
 
 def login(req):
-    
-    return render(req, 'login.html')
+    if req.method == 'POST':
+        username = req.POST['username']
+        password = req.POST['password']
+        user = auth.authenticate(req, username=username, password=password)
+        if user:
+            auth.login(req, user)
+            return redirect('chatbot')
+        else:
+            errormsg = "Invalid username or password"
+            return render(req, 'login.html', {'error_message': errormsg})
+    else:
+        return render(req, 'login.html')
 
 def register(req):
     if req.method == 'POST':
