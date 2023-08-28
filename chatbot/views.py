@@ -1,12 +1,12 @@
+from dotenv import load_dotenv
+import os
 from django.shortcuts import render
 from django.http import JsonResponse
-from dotenv import load_dotenv
 import openai
 
 load_dotenv()
 
-
-openai.api_key = openaiKey
+openai.api_key = os.environ.get("API_KEY")
 
 def askOpenai(message):
     response = openai.ChatCompletion.create(
