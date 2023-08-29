@@ -22,7 +22,6 @@ def askOpenai(message):
         {"role": "user", "content": message}
     ]
     )
-    print(response)
     answer = response['choices'][0]['message']['content']
     return answer
 
