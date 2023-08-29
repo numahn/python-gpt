@@ -10,11 +10,13 @@ from django.contrib.auth.models import User
 from .models import Chat
 from django.utils import timezone
 
+#Get all enviroment variables, in this case one
 load_dotenv()
-
+#Get key
 openai.api_key = os.environ.get("API_KEY")
 
 def askOpenai(message):
+    #Get GPT response
     response = openai.ChatCompletion.create(
         model = "gpt-4",
         messages=[
@@ -26,8 +28,9 @@ def askOpenai(message):
     return answer
 
 def chatbot(req):
+    #Get Chat history for only this user logged in
     chats = Chat.objects.filter(user=req.user)
-
+    #Response to user message
     if req.method == 'POST':
         message = req.POST.get('message')
         response = askOpenai(message)
