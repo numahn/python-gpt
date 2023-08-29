@@ -1,10 +1,15 @@
 from dotenv import load_dotenv
 import os
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import openai
+
 from django.contrib import auth
 from django.contrib.auth.models import User
+from .models import Chat
+from django.utils import timezone
+
 load_dotenv()
 
 openai.api_key = os.environ.get("API_KEY")
@@ -22,11 +27,15 @@ def askOpenai(message):
     return answer
 
 def chatbot(req):
+    chats = Chat.objects.filter(user=req.user)
+
     if req.method == 'POST':
         message = req.POST.get('message')
         response = askOpenai(message)
+        chat = Chat(user=req.user, message=message, response=response, created_at=timezone.now)
+        chat.save()
         return JsonResponse({'message': message, 'response': response})
-    return render(req, 'chatbot.html')
+    return render(req, 'chatbot.html', {'chats': chats})
 
 def login(req):
     if req.method == 'POST':
