@@ -4,9 +4,11 @@
 A program where you create an account, and talk to your chatbot / personal assistant! Simply sign up and chat.
 In order to run, clone the repository and type in the command:
 ```
-pip3 install
+pip install -r requirements.txt
 ```
 now run:
-```python3 manage.py runserver```
+```
+python3 manage.py runserver
+```
 Go to localhost:8000 to check it out!
 This may be delayed in the future.
