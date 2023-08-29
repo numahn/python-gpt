@@ -7,6 +7,8 @@ In order to run, clone the repository and type in the command:
 pip install -r requirements.txt
 ```
 now run:
-```python3 manage.py runserver```
+```
+python3 manage.py runserver
+```
 Go to localhost:8000 to check it out!
 This may be delayed in the future.
