@@ -11,4 +11,3 @@ now run:
 python3 manage.py runserver
 ```
 Go to localhost:8000 to check it out!
-This may be delayed in the future.
